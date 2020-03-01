@@ -28,20 +28,20 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == client.user or str(message.channel) != 'bot-testing':
         return
 
-    brooklyn_99_quotes = [
-        'I\'m the human form of the 💯 emoji.',
-        'Bingpot!',
-        (
-            'Cool. Cool cool cool cool cool cool cool, '
-            'no doubt no doubt no doubt no doubt.'
-        ),
-    ]
+    introduction_quotes = [
+        'Sivaslı Taverne hoş geldin, sol tarafta Kimya masasını ve köşede takılan mültecileri bulabilirsin. Koridorun sonunda ise akşamları canlı müzik var kalıbalıktan fark edersin zaten.',
+        'havhav.... ba dum tsss',
+        'Bira sadece 3 gold!! kaçırma derim!',
+        'Maelestorm\'un bana 34 gold borcu var, onu bulursam Draugrlara yem edeceğim!!']
 
-    if message.content == '99!':
-        response = random.choice(brooklyn_99_quotes)
+    if 'bilgi' or 'tavern' in message.content.lower():
+        response = random.choice(introduction_quotes)
         await message.channel.send(response)
+    elif 'fotograf' or 'görüntü' or 'nerede' or 'nerde' or 'benziyor':
+        image = 'https://cdna.artstation.com/p/assets/images/images/002/810/298/large/guray-emen-2.jpg?1465984726'
+        await message.channel.send(image)
 
 client.run(TOKEN)
